@@ -70,10 +70,9 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   aws
-  docker
+  podman
   git
   jsontools
-  macports
   macos
   node
   nomad
@@ -132,4 +131,5 @@ test -e /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh && sourc
 
 autoload -Uz compinit
 compinit
-[[ $commands[kubectl] ]] && source <(/usr/local/bin/kubectl completion zsh)
+[[ $commands[kubectl] ]] && source <(/opt/homebrew/bin/kubectl completion zsh)
+
