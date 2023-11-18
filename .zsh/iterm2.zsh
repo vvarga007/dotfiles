@@ -6,7 +6,10 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+# Load power10k theme 
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.zsh/p10k.zsh ]] || source ~/.zsh/p10k.zsh
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,7 +73,6 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   aws
-  podman
   git
   jsontools
   macos
@@ -79,7 +81,6 @@ plugins=(
   sudo
   terraform
   virtualenv
-  web-search
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -109,20 +110,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir virtualenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time)
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-# Add a space in the first prompt
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%f"
-# Visual customisation of the second prompt line
-local user_symbol="$"
-if [[ $(print -P "%#") =~ "#" ]]; then
-    user_symbol = "#"
-fi
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} $user_symbol%{%b%f%k%F{yellow}%} %{%f%}"
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='red'
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
 # load zsh integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
